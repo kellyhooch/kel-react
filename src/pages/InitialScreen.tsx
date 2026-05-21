@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Typography, Box } from '@mui/material';
+import { Button, Typography, Box, Container } from '@mui/material';
+import { User, UserPlus } from 'lucide-react';
 
 interface InitialScreenProps {
   setIsRecurring: (isRecurring: boolean) => void;
@@ -19,18 +20,54 @@ const InitialScreen: React.FC<InitialScreenProps> = ({ setIsRecurring }) => {
   };
 
   return (
-    <Box sx={{ textAlign: 'center', mt: 8 }}>
-      <Typography variant="h2" gutterBottom>
+    <Container maxWidth="sm" sx={{ textAlign: 'center', mt: 8 }}>
+      <Typography variant="h2" component="h1" gutterBottom sx={{ fontFamily: 'Poppins', fontWeight: 700, color: '#333' }}>
         Welcome!
       </Typography>
-      <Typography variant="h5" gutterBottom>
+      <Typography variant="h5" component="p" color="textSecondary" sx={{ mb: 5, fontFamily: 'Poppins' }}>
         Are you a new or recurring customer?
       </Typography>
-      <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center', gap: 2 }}>
-        <Button variant="contained" onClick={() => handleInitialChoice(false)}>New</Button>
-        <Button variant="contained" onClick={() => handleInitialChoice(true)}>Recurring</Button>
+      <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
+        <Button
+          variant="contained"
+          color="primary"
+          size="large"
+          startIcon={<UserPlus />}
+          onClick={() => handleInitialChoice(false)}
+          sx={{
+            fontFamily: 'Poppins',
+            borderRadius: '50px',
+            padding: '15px 30px',
+            boxShadow: '0 5px 15px rgba(255, 105, 180, 0.4)',
+            '&:hover': {
+                transform: 'translateY(-3px)',
+                boxShadow: '0 8px 25px rgba(255, 105, 180, 0.6)',
+            }
+          }}
+        >
+          New
+        </Button>
+        <Button
+          variant="contained"
+          color="secondary"
+          size="large"
+          startIcon={<User />}
+          onClick={() => handleInitialChoice(true)}
+          sx={{
+            fontFamily: 'Poppins',
+            borderRadius: '50px',
+            padding: '15px 30px',
+            boxShadow: '0 5px 15px rgba(245, 0, 87, 0.4)',
+            '&:hover': {
+                transform: 'translateY(-3px)',
+                boxShadow: '0 8px 25px rgba(245, 0, 87, 0.6)',
+            }
+          }}
+        >
+          Recurring
+        </Button>
       </Box>
-    </Box>
+    </Container>
   );
 };
 
