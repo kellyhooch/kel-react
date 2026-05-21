@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { ShoppingCart, Heart, Eye } from 'lucide-react';
 import {
   Box,
@@ -35,7 +35,6 @@ interface Comment {
 }
 
 interface WorkflowProps {
-  currentItem: Item | null;
   addToCart: (item: Item) => void;
   saveForLater: () => void;
   comments: Comment[];
@@ -46,8 +45,10 @@ interface WorkflowProps {
   setPostAnonymously: (postAnonymously: boolean) => void;
 }
 
-const Workflow: React.FC<WorkflowProps> = ({ currentItem, addToCart, saveForLater, comments, newComment, setNewComment, handleAddComment, postAnonymously, setPostAnonymously }) => {
+const Workflow: React.FC<WorkflowProps> = ({ addToCart, saveForLater, comments, newComment, setNewComment, handleAddComment, postAnonymously, setPostAnonymously }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const currentItem = location.state?.item as Item | null;
 
   if (!currentItem) {
     return (

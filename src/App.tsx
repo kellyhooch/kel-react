@@ -154,7 +154,7 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<InitialScreen setIsRecurring={() => {}} />} />
               <Route path="/questionnaire" element={<Questionnaire setCurrentItem={setCurrentItem} />} />
-              <Route path="/workflow" element={<Workflow currentItem={currentItem} addToCart={addToCart} saveForLater={saveForLater} comments={comments} newComment={newComment} setNewComment={setNewComment} handleAddComment={handleAddComment} postAnonymously={postAnonymously} setPostAnonymously={setPostAnonymously} />} />
+              <Route path="/workflow" element={<Workflow addToCart={addToCart} saveForLater={saveForLater} comments={comments} newComment={newComment} setNewComment={setNewComment} handleAddComment={handleAddComment} postAnonymously={postAnonymously} setPostAnonymously={setPostAnonymously} />} />
               <Route path="/catalog" element={<Catalog setCurrentItem={setCurrentItem} addToCart={addToCart} />} />
               <Route path="/cart" element={<Cart cart={cart} updateQuantity={updateQuantity} removeFromCart={removeFromCart} calculateTotal={calculateTotal} />} />
               <Route path="/payment" element={<Payment handlePayment={handlePayment} />} />

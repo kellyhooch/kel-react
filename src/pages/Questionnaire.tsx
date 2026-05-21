@@ -23,13 +23,13 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ setCurrentItem }) => {
   ];
 
   const handleQuestionnaireAnswer = (answer: 'dry' | 'oily') => {
-    if (answer === 'dry') {
-      setCurrentItem(catalog.find(item => item.id === 1) || null);
-    } else {
-      setCurrentItem(catalog.find(item => item.id === 2) || null);
-    }
-    setTimeout(() => navigate('/workflow'), 0);
-  }
+    const selectedItem = answer === 'dry'
+      ? (catalog.find(item => item.id === 1) || null)
+      : (catalog.find(item => item.id === 2) || null);
+
+    setCurrentItem(selectedItem);
+    navigate('/workflow', { state: { item: selectedItem } });
+  };
 
   return (
     <Container maxWidth="sm" sx={{ textAlign: 'center', mt: 8 }}>
